@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Get release version
         run: |
-          export tag="$(curl -s https://api.github.com/repos/mobile-shell/mosh/releases/latest | jq -r '.tag_name')"
+          export tag="$(curl -s https://api.github.com/repos/eggbean/mosh/releases/latest | jq -r '.tag_name')"
           echo "version=${tag}" >> $GITHUB_ENV
 
       - name: Checkout code
@@ -26,7 +26,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           docker build -t builder .
-          git clone --depth=1 --branch ${{ env.version }} https://github.com/mobile-shell/mosh.git
+          git clone --depth=1 https://github.com/eggbean/mosh.git
           docker run -v $PWD/mosh:/mosh -w /mosh --name=builder builder sh -c './autogen.sh && LDFLAGS=-static ./configure && make'
       - run: |
           (
@@ -69,7 +69,7 @@ jobs:
     steps:
       - name: Get release version
         run: |
-          export tag="$(curl -s https://api.github.com/repos/mobile-shell/mosh/releases/latest | jq -r '.tag_name')"
+          export tag="$(curl -s https://api.github.com/repos/eggbean/mosh/releases/latest | jq -r '.tag_name')"
           echo "version=${tag}" >> $GITHUB_ENV
 
       - name: Download packages
