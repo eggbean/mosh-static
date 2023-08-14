@@ -5,14 +5,18 @@ RUN apk update && \
   autoconf \
   automake \
   build-base \
+  gzip \
+  libtool \
+  libutempter-dev \
   ncurses-dev \
   ncurses-static \
   openssh-client \
+  openssl-dev>3 \
   openssh-server \
-  openssl-dev \
   openssl-libs-static \
+  perl-dev \
   perl-doc \
+  perl-io-tty \
   protobuf-dev \
-  zlib-static \
   zlib-dev \
-  libutempter-dev
+  zlib-static
